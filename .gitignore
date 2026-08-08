@@ -1,0 +1,14 @@
+# --- Internal planning docs (kept out of the public website repo) ---------
+# These were the brief for building the site; they aren't part of the site.
+# Delete these lines if you'd rather keep them in the repo.
+claude-code-prompt-mini-crotchets.md
+mini-crotchets-PRD.md
+ASSETS-MANIFEST.md
+Board Flyer PDF.pdf
+
+# --- OS / editor cruft ----------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
