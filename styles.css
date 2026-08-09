@@ -84,7 +84,7 @@ strong, b { font-weight: 600; }
 /* ------------------------------ Layout ----------------------------------- */
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
 
-.section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.section { padding-block: clamp(2rem, 4.2vw, 3.25rem); }
 .section:nth-of-type(even) { background: var(--paper-2); }
 .section__heading {
   font-size: clamp(1.6rem, 1.2rem + 2vw, 2.35rem);
@@ -166,7 +166,7 @@ strong, b { font-weight: 600; }
 /* ------------------------------- Hero ------------------------------------ */
 .hero {
   text-align: center;
-  padding-block: clamp(2.4rem, 6vw, 4.5rem);
+  padding-block: clamp(1.75rem, 4vw, 3rem);
   background:
     radial-gradient(120% 80% at 50% -12%, #ffffff 0%, rgba(255,255,255,0) 62%),
     var(--paper);
@@ -215,12 +215,12 @@ strong, b { font-weight: 600; }
 /* --------------------------- Photo band ---------------------------------- */
 .band { padding: 0; }
 .band__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.band__grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; }
+.band__grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
 @media (min-width: 720px) { .band__grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* ------------------------------- About ----------------------------------- */
 .pull-quote {
-  margin: 1.75rem 0; padding: .25rem 0 .25rem 1.5rem;
+  margin: 1.25rem 0; padding: .25rem 0 .25rem 1.5rem;
   border-left: 2px solid var(--accent);
 }
 .pull-quote p {
@@ -231,15 +231,10 @@ strong, b { font-weight: 600; }
 .pull-quote cite { color: var(--ink-soft); font-style: normal; font-weight: 600; font-size: .95rem; }
 .pull-quote--sm p { font-size: clamp(1.1rem, 1rem + .6vw, 1.35rem); }
 
-.about__grid { display: grid; gap: 1.5rem; align-items: start; margin-top: 1.5rem; }
+.about__grid { display: grid; gap: 1.5rem; align-items: center; margin-top: 1.25rem; }
 @media (min-width: 860px) { .about__grid { grid-template-columns: 1.4fr 1fr; gap: 2.5rem; } }
 .about__photo { margin: 0; }
 .about__photo img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; }
-.about__mantra {
-  font-family: var(--font-serif); font-style: italic; font-weight: 600;
-  color: var(--ink);
-  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); margin-top: .75rem;
-}
 
 /* ------------------------------ Enquire ---------------------------------- */
 .enquire { text-align: center; }
@@ -248,7 +243,7 @@ strong, b { font-weight: 600; }
 
 /* --------------------------- Term dates & fees --------------------------- */
 .dates__intro { color: var(--ink-soft); max-width: 55ch; }
-.term-cards { display: grid; gap: 1.25rem; margin-top: 1.75rem; }
+.term-cards { display: grid; gap: 1.25rem; margin-top: 1.25rem; }
 @media (min-width: 720px) { .term-cards { grid-template-columns: repeat(3, 1fr); } }
 .term-card {
   background: var(--white); border-radius: var(--radius-lg);
@@ -272,11 +267,10 @@ strong, b { font-weight: 600; }
 .term-card__row--wide .term-card__val { text-align: left; font-weight: 800; }
 .term-card__row--fee .term-card__val { color: var(--accent); font-weight: 900; font-size: 1.1rem; }
 .term-cards__empty { grid-column: 1 / -1; color: var(--ink-soft); }
-.dates__note { margin-top: 1.5rem; color: var(--ink-soft); font-size: .95rem; }
 
 /* ------------------------------- Videos ---------------------------------- */
 .videos__intro { color: var(--ink-soft); max-width: 60ch; }
-.video-grid { display: grid; gap: 1.5rem; margin-top: 1.75rem; }
+.video-grid { display: grid; gap: 1.5rem; margin-top: 1.25rem; }
 @media (min-width: 720px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
 .video { margin: 0; }
 .video__frame {
