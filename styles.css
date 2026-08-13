@@ -282,13 +282,12 @@ strong, b { font-weight: 600; }
 .video figcaption { margin-top: .6rem; font-weight: 700; color: var(--ink); }
 
 /* ------------------------------- Parties --------------------------------- */
-.parties__inner, .location__inner { display: grid; gap: 1.75rem; align-items: center; }
+.parties__inner { display: grid; gap: 1.75rem; align-items: center; }
 @media (min-width: 860px) {
   .parties__inner { grid-template-columns: 1.2fr 1fr; gap: 2.5rem; }
-  .location__inner { grid-template-columns: 1fr 1.1fr; gap: 2.5rem; }
 }
-.parties__photo, .location__photo { margin: 0; }
-.parties__photo img, .location__photo img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; }
+.parties__photo { margin: 0; }
+.parties__photo img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; }
 
 /* ---------------------------- Testimonials ------------------------------- */
 .testimonials { text-align: center; }
@@ -311,12 +310,6 @@ strong, b { font-weight: 600; }
   font-size: 1.12rem; font-weight: 500; margin: 0 0 .6rem; line-height: 1.4;
 }
 .testimonial cite { color: var(--ink-soft); font-style: normal; font-weight: 600; }
-
-/* ------------------------------ Location --------------------------------- */
-.location__address {
-  font-style: normal; font-weight: 600; font-size: 1.15rem;
-  line-height: 1.5; margin: 0 0 1rem;
-}
 
 /* ------------------------------- Footer ---------------------------------- */
 .site-footer {
