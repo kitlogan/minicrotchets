@@ -239,7 +239,6 @@ strong, b { font-weight: 600; }
 /* ------------------------------ Enquire ---------------------------------- */
 .enquire { text-align: center; }
 .enquire__inner { max-width: 46rem; margin-inline: auto; }
-.enquire__lead { color: var(--ink-soft); max-width: 46ch; margin-inline: auto; }
 
 /* --------------------------- Term dates & fees --------------------------- */
 .dates__intro { color: var(--ink-soft); max-width: 55ch; }

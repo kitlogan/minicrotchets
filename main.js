@@ -40,6 +40,31 @@
     }
   }
 
+  /* Short, consistent British dates for the term cards — done by hand (not
+     Intl) so every browser prints the SAME three-letter month, always. */
+  var SHORT_MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function shortDate(d, withYear) {
+    return d.getDate() + " " + SHORT_MONTHS[d.getMonth()] + (withYear ? " " + d.getFullYear() : "");
+  }
+
+  /* "2026-10-29" -> "29 Oct" */
+  function formatShortDay(value) {
+    var d = parseISODate(value);
+    return d ? shortDate(d, false) : null;
+  }
+
+  /* "2026-09-10","2026-12-10" -> "10 Sep – 10 Dec 2026" (the year shows once
+     when both dates share it, otherwise on both ends). */
+  function formatDateRange(startValue, endValue) {
+    var s = parseISODate(startValue), e = parseISODate(endValue);
+    if (!s || !e) { return null; }
+    if (s.getFullYear() === e.getFullYear()) {
+      return shortDate(s, false) + " – " + shortDate(e, true);
+    }
+    return shortDate(s, true) + " – " + shortDate(e, true);
+  }
+
   /* --- read the data safely ------------------------------------------------ */
   var data = (typeof MINI_CROTCHETS !== "undefined" && MINI_CROTCHETS) ? MINI_CROTCHETS : null;
   var terms = (data && Object.prototype.toString.call(data.terms) === "[object Array]")
@@ -116,34 +141,34 @@
       return;
     }
 
-    /* rows we show inside each card, in order */
-    var rows = [
-      { key: "dates",    label: "Dates", wide: true },
-      { key: "weeks",    label: "Length", suffix: " weeks" },
-      { key: "halfTerm", label: "Half term" },
-      { key: "dropIn",   label: "Drop-in" },
-      { key: "fullTerm", label: "Full term" }
-    ];
-
     var html = "";
     for (var i = 0; i < terms.length; i++) {
       var t = terms[i] || {};
       var title = t.title || "Term " + (i + 1);
+
+      var weeks = (typeof t.weeks === "string" && t.weeks.length)
+        ? (/week/i.test(t.weeks) ? t.weeks : t.weeks + " weeks")
+        : null;
+
+      /* Dates & half-term are formatted here so every term reads the same way */
+      var rows = [
+        { label: "Dates",     value: formatDateRange(t.startDate, t.endDate), wide: true },
+        { label: "Length",    value: weeks },
+        { label: "Half term", value: formatShortDay(t.halfTermDate) },
+        { label: "Drop-in",   value: t.dropIn, fee: true },
+        { label: "Full term", value: t.fullTerm, fee: true }
+      ];
 
       html += '<article class="term-card">';
       html += '<h3 class="term-card__title">' + escapeHTML(title) + "</h3>";
       html += '<dl class="term-card__list">';
       for (var r = 0; r < rows.length; r++) {
         var row = rows[r];
-        var value = t[row.key];
-        if (typeof value !== "string" || !value.length) { continue; } /* skip missing */
-        var display = value;
-        if (row.suffix && !/week/i.test(value)) { display = value + row.suffix; }
-        var isFee = (row.key === "dropIn" || row.key === "fullTerm");
-        var cls = "term-card__row" + (isFee ? " term-card__row--fee" : "") + (row.wide ? " term-card__row--wide" : "");
+        if (typeof row.value !== "string" || !row.value.length) { continue; } /* skip missing */
+        var cls = "term-card__row" + (row.fee ? " term-card__row--fee" : "") + (row.wide ? " term-card__row--wide" : "");
         html += '<div class="' + cls + '">';
         html += '<dt class="term-card__key">' + escapeHTML(row.label) + "</dt>";
-        html += '<dd class="term-card__val">' + escapeHTML(display) + "</dd>";
+        html += '<dd class="term-card__val">' + escapeHTML(row.value) + "</dd>";
         html += "</div>";
       }
       html += "</dl>";
