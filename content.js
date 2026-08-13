@@ -1,63 +1,37 @@
 /* ============================================================================
-   MINI CROTCHETS — TERM DATES & FEES
+   MINI CROTCHETS — term dates & fees        ★ THE ONLY FILE YOU EVER EDIT ★
    ============================================================================
+   Once a year, set the three terms below and the website updates itself —
+   the "Next term starts on …" line and the "Term dates & fees" cards.
 
-   ★ THIS IS THE ONLY FILE YOU EVER NEED TO EDIT. ★
-
-   Once a year you set the three terms for the year here, and the website
-   updates itself: the "Next term starts on ..." line at the top of the page
-   and the "Term dates & fees" cards both come from what you type below.
-
-   HOW TO EDIT (there is a full picture guide in UPDATING-TERM-DATES.md):
-     • Only change the words INSIDE the "quotation marks".
-     • Keep every quotation mark  "  and every comma  ,  exactly where it is.
-     • Don't delete the labels on the left (like  fullTerm: ).
-     • Dates are written for the computer as  YEAR-MONTH-DAY  (e.g. 2026-09-10).
-       The website turns them into tidy dates for you (e.g. "10 Sep 2026"),
-       so they always look neat and consistent — you never format them yourself.
-     • When you're done, save/commit. The site updates in about a minute.
-
-   IF SOMETHING LOOKS BROKEN after an edit:
-     Don't worry — nothing is lost. Open this file's "History" on GitHub and
-     restore the previous version (see UPDATING-TERM-DATES.md, last section).
+   THE RULES  (there's a full step-by-step guide in UPDATING-TERM-DATES.md):
+     • Change only the words INSIDE the "quotation marks".
+     • Keep every  "  and every  ,  where it is, and don't change the labels.
+     • Write every date as  YEAR-MONTH-DAY   (2026-09-10 means 10 Sep 2026).
+       The website prints dates out tidily for you, so every term always
+       looks the same — you never format a date yourself.
+     • Save (commit) when done; the site updates in about a minute.
+     • Went wrong? Nothing is lost — see the "undo" section in the guide.
    ============================================================================ */
 
 var MINI_CROTCHETS = {
 
-  /* -- When the class runs (shown at the top of the page) ------------------ */
-  classDay:  "Thursdays",         /* e.g. "Thursdays"            */
-  classTime: "9:30–10:00am",      /* e.g. "9:30–10:00am"         */
+  /* When the class runs (rarely changes) */
+  classDay:  "Thursdays",      /* e.g. "Thursdays"     */
+  classTime: "9:30–10:00am",   /* e.g. "9:30–10:00am"  */
 
-
-  /* ========================================================================
-     THE THREE TERMS
-     ------------------------------------------------------------------------
-     There are three terms below (Autumn, Spring, Summer). Each one is a block
-     that starts with  {  and ends with  },  — change only the words in quotes.
-
-     For each term, fill in these SEVEN things:
-       title         – the term's name, e.g. "Autumn Term 2026"
-       startDate     – the FIRST class, as  YEAR-MONTH-DAY   e.g. "2026-09-10"
-       endDate       – the LAST class,  as  YEAR-MONTH-DAY   e.g. "2026-12-10"
-       halfTermDate  – the half-term (no class), as YEAR-MONTH-DAY  "2026-10-29"
-       weeks         – how many weeks, e.g. "13"
-       dropIn        – the pay-per-visit price, e.g. "£7.50"
-       fullTerm      – the whole-term price, e.g. "£65"
-
-     ⭐ The three dates MUST be in  YEAR-MONTH-DAY  form with dashes
-        (e.g. "2027-01-07" means the 7th of January 2027). The website prints
-        them out neatly for you, so every term always looks the same.
-     ======================================================================== */
+  /* The three terms. The first is labelled to show what each line means;
+     the other two follow exactly the same pattern. */
   terms: [
 
     {
-      title:        "Autumn Term 2026",
-      startDate:    "2026-09-10",
-      endDate:      "2026-12-10",
-      halfTermDate: "2026-10-29",
-      weeks:        "13",
-      dropIn:       "£7.50",
-      fullTerm:     "£65"
+      title:        "Autumn Term 2026",   /* the term's name                 */
+      startDate:    "2026-09-10",         /* first class    (year-month-day)  */
+      endDate:      "2026-12-10",         /* last class     (year-month-day)  */
+      halfTermDate: "2026-10-29",         /* half-term off  (year-month-day)  */
+      weeks:        "13",                 /* how many weeks                   */
+      dropIn:       "£7.50",              /* price per visit                  */
+      fullTerm:     "£65"                 /* price for the whole term         */
     },
 
     {
@@ -81,6 +55,4 @@ var MINI_CROTCHETS = {
     }
 
   ]
-
-  /* ↑↑↑  Nothing below here needs changing. You're all done — save/commit.  */
 };
