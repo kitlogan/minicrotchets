@@ -215,7 +215,7 @@ strong, b { font-weight: 600; }
 /* --------------------------- Photo band ---------------------------------- */
 .band { padding: 0; }
 .band__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.band__grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
+.band__grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1 / 1; }
 @media (min-width: 720px) { .band__grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* ------------------------------- About ----------------------------------- */
