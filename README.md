@@ -54,8 +54,9 @@ best matches how GitHub Pages serves it.)
    **Source: Deploy from a branch** → **Branch: `main`**, **Folder: `/ (root)`** → **Save**.
    Your site goes live at `https://<your-username>.github.io/minicrotchets/` within a minute or two.
 
-4. **Point the custom domain at GitHub Pages.** The `CNAME` file (already in this
-   repo) contains `minicrotchets.co.uk`. At your domain registrar / DNS host, set:
+4. **Point the custom domain at GitHub Pages.** (The site is first published on
+   the `github.io` URL above; do this step when you're ready to move
+   `minicrotchets.co.uk` off WordPress.) At your domain registrar / DNS host, set:
 
    **Apex domain `minicrotchets.co.uk` → four A records:**
    ```
@@ -73,9 +74,10 @@ best matches how GitHub Pages serves it.)
    ```
    **`www` subdomain → CNAME → `<your-username>.github.io`**
 
-   Then in **Settings → Pages → Custom domain**, confirm `minicrotchets.co.uk`
-   is set (it reads the `CNAME` file), wait for the DNS check to go green, and
-   tick **Enforce HTTPS**. (DNS can take up to a few hours to propagate.)
+   Then in **Settings → Pages → Custom domain**, enter `minicrotchets.co.uk`
+   and Save (this creates the `CNAME` file in the repo automatically), wait for
+   the DNS check to go green, and tick **Enforce HTTPS**. (DNS can take up to a
+   few hours to propagate.)
 
 That's it — no paid hosting, no management fee. After launch you can retire the
 old WordPress site.
