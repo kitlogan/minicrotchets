@@ -15,10 +15,10 @@
   --ink-soft: #6a6472;      /* muted text                                      */
   --line:     #e7ded1;      /* warm hairline borders                           */
 
-  /* One restrained accent (a refined rose), used sparingly */
-  --accent:      #b02a63;   /* buttons, links, prices                          */
-  --accent-deep: #8c1f4d;   /* hover                                           */
-  --accent-soft: #f6e8ee;   /* faint rose wash for the "next term" chip        */
+  /* Accent = the leaflet blue (matches the "Wonderful music classes…" line) */
+  --accent:      #0066b2;   /* buttons, links, prices, blue text               */
+  --accent-deep: #00518f;   /* hover                                           */
+  --accent-soft: #e6f0f8;   /* faint blue wash                                 */
 
   --brand-pink:  #ec008c;   /* the logo's pink — kept only as brand identity   */
 
@@ -121,11 +121,11 @@ strong, b { font-weight: 600; }
 .btn--primary { background: var(--btn-bg); color: var(--btn-fg); box-shadow: var(--shadow-md); }
 .btn--primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .btn--secondary {
-  background: var(--white);
-  color: var(--accent);
+  background: var(--accent);
+  color: #fff;
   border-color: var(--accent);
 }
-.btn--secondary:hover { background: var(--paper-2); color: var(--accent-deep); transform: translateY(-2px); }
+.btn--secondary:hover { background: var(--accent-deep); color: #fff; border-color: var(--accent-deep); transform: translateY(-2px); }
 .btn--lg { padding: 1rem 1.8rem; font-size: 1.1rem; }
 .btn:active { transform: translateY(0); }
 
@@ -175,7 +175,7 @@ strong, b { font-weight: 600; }
 .hero__logo { margin: 0 0 .9rem; }
 /* size by width so the wide wordmark never exceeds the viewport on phones */
 .hero__logo img { width: min(460px, 84vw); height: auto; }
-.hero__tagline { max-width: 46ch; color: var(--ink-soft); font-size: clamp(1.02rem, 0.98rem + .4vw, 1.2rem); margin-bottom: 1.5rem; }
+.hero__tagline { max-width: 46ch; color: var(--accent); font-weight: 600; font-size: clamp(1.02rem, 0.98rem + .4vw, 1.2rem); margin-bottom: 1.5rem; }
 
 /* Five separate mascot rings — always one row, never wrapping or overlapping */
 .mascots {
@@ -203,13 +203,13 @@ strong, b { font-weight: 600; }
 .hero__facts-icon { font-size: 1.15rem; }
 
 .next-term {
-  background: var(--accent-soft); color: var(--accent-deep);
-  border: 1px solid rgba(176, 42, 99, .22);
+  background: var(--accent); color: #fff;
   font-weight: 700; font-size: clamp(.98rem, .93rem + .4vw, 1.15rem);
   padding: .6rem 1.25rem; border-radius: 999px;
+  box-shadow: var(--shadow-md);
   margin: 0 0 .5rem;
 }
-.next-term__label { color: var(--ink-soft); }
+.next-term__label { color: #fff; }
 .next-term__date { white-space: nowrap; }
 
 /* --------------------------- Photo band ---------------------------------- */
@@ -239,11 +239,14 @@ strong, b { font-weight: 600; }
 /* ------------------------------ Enquire ---------------------------------- */
 .enquire { text-align: center; }
 .enquire__inner { max-width: 46rem; margin-inline: auto; }
+.enquire__heading { color: var(--accent); }
 
 /* --------------------------- Term dates & fees --------------------------- */
 .dates__intro { color: var(--ink-soft); max-width: 55ch; }
 .term-cards { display: grid; gap: 1.25rem; margin-top: 1.25rem; }
-@media (min-width: 720px) { .term-cards { grid-template-columns: repeat(3, 1fr); } }
+/* 3-up only when the cards are wide enough for a full-month date on one line;
+   below this they stack in one column (dates still fit, rows stay aligned). */
+@media (min-width: 1040px) { .term-cards { grid-template-columns: repeat(3, 1fr); } }
 .term-card {
   background: var(--white); border-radius: var(--radius-lg);
   border: 1px solid var(--line); box-shadow: var(--shadow-sm); padding: 1.5rem;

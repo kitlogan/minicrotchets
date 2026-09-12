@@ -40,27 +40,30 @@
     }
   }
 
-  /* Short, consistent British dates for the term cards — done by hand (not
-     Intl) so every browser prints the SAME three-letter month, always. */
-  var SHORT_MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  /* Consistent British dates for the term cards — done by hand (not Intl) so
+     every browser prints the SAME full month name, always. */
+  var MONTHS = ["January","February","March","April","May","June","July",
+                "August","September","October","November","December"];
 
   function shortDate(d, withYear) {
-    return d.getDate() + " " + SHORT_MONTHS[d.getMonth()] + (withYear ? " " + d.getFullYear() : "");
+    return d.getDate() + " " + MONTHS[d.getMonth()] + (withYear ? " " + d.getFullYear() : "");
   }
 
-  /* "2026-10-29" -> "29 Oct" */
+  /* "2026-10-29" -> "29 October" */
   function formatShortDay(value) {
     var d = parseISODate(value);
     return d ? shortDate(d, false) : null;
   }
 
-  /* "2026-09-10","2026-12-10" -> "10 Sep – 10 Dec 2026" (the year shows once
-     when both dates share it, otherwise on both ends). */
+  /* "2026-09-10","2026-12-10" -> "10 September – 10 December" (the year isn't
+     repeated here — it's already in the term title, e.g. "Autumn Term 2026" —
+     which also keeps the line short enough to stay on one row. If a term ever
+     spans two years, both years are shown so it stays clear.) */
   function formatDateRange(startValue, endValue) {
     var s = parseISODate(startValue), e = parseISODate(endValue);
     if (!s || !e) { return null; }
     if (s.getFullYear() === e.getFullYear()) {
-      return shortDate(s, false) + " – " + shortDate(e, true);
+      return shortDate(s, false) + " – " + shortDate(e, false);
     }
     return shortDate(s, true) + " – " + shortDate(e, true);
   }
