@@ -2,7 +2,7 @@
    MINI CROTCHETS — term dates & fees        ★ THE ONLY FILE YOU EVER EDIT ★
    ============================================================================
    Once a year, set the three terms below and the website updates itself —
-   the "Next term starts on …" line and the "Term dates & fees" cards.
+   the "Term dates & fees" cards.
 
    THE RULES  (there's a full step-by-step guide in UPDATING-TERM-DATES.md):
      • Change only the words INSIDE the "quotation marks".

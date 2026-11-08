@@ -17,7 +17,7 @@ hand-written HTML, CSS and a little vanilla JavaScript, hosted free on
 |---|---|
 | `index.html` | The whole site — one scrolling page. |
 | `styles.css` | All the styling. |
-| `main.js` | Reads `content.js` and fills in the "next term" line and the term/fees cards; handles smooth scrolling. |
+| `main.js` | Reads `content.js` and fills in the term/fees cards; handles smooth scrolling. |
 | **`content.js`** | **The only file the owner edits** — term dates, half-terms and fees. |
 | `assets/img/` | Logo, the five mascot rings, and the class photos. |
 | `CNAME` | Tells GitHub Pages the custom domain is `minicrotchets.co.uk`. |

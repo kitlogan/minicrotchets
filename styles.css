@@ -201,16 +201,7 @@ strong, b { font-weight: 600; }
 .hero__facts li { display: inline-flex; align-items: center; gap: .5rem; color: var(--ink); }
 .hero__facts strong { font-weight: 400; }   /* the first screen reads calm, not bold */
 .hero__facts-icon { font-size: 1.15rem; }
-
-.next-term {
-  background: var(--accent); color: #fff;
-  font-weight: 700; font-size: clamp(.98rem, .93rem + .4vw, 1.15rem);
-  padding: .6rem 1.25rem; border-radius: 999px;
-  box-shadow: var(--shadow-md);
-  margin: 0 0 .5rem;
-}
-.next-term__label { color: #fff; }
-.next-term__date { white-space: nowrap; }
+.hero__cta { justify-content: center; }
 
 /* --------------------------- Photo band ---------------------------------- */
 .band { padding: 0; }
@@ -288,7 +279,8 @@ strong, b { font-weight: 600; }
 @media (min-width: 860px) {
   .parties__inner { grid-template-columns: 1.2fr 1fr; gap: 2.5rem; }
 }
-.parties__photo { margin: 0; }
+/* the party photo is small (224×320) — cap it so it isn't blown up blurry */
+.parties__photo { margin: 0; justify-self: center; max-width: 300px; }
 .parties__photo img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; }
 
 /* ---------------------------- Testimonials ------------------------------- */
@@ -319,7 +311,8 @@ strong, b { font-weight: 600; }
   padding-block: 2.5rem;
 }
 .site-footer__inner { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
-.site-footer__logo { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: .95; }
+/* keep the logo in its brand pink, as in the header */
+.site-footer__logo { height: 24px; width: auto; }
 .site-footer__contact {
   list-style: none; padding: 0; margin: 0;
   display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: center;

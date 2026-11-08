@@ -1,9 +1,8 @@
 /* ============================================================================
    MINI CROTCHETS — main.js
    ----------------------------------------------------------------------------
-   Reads the term data from content.js and fills in:
-     • the "Next term starts on ..." line in the hero, and
-     • the "Term dates & fees" cards.
+   Reads the term data from content.js and fills in the "Term dates & fees"
+   cards.
    It also handles smooth scrolling for the on-page navigation buttons.
 
    The website owner does NOT need to edit this file — everything editable
@@ -25,19 +24,6 @@
     if (!m) { return null; }
     var d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
     return isNaN(d.getTime()) ? null : d;
-  }
-
-  /* "2026-09-10" -> "Thursday 10 September 2026" (British format).           */
-  function formatLongDate(value) {
-    var d = parseISODate(value);
-    if (!d) { return null; }
-    try {
-      return d.toLocaleDateString("en-GB", {
-        weekday: "long", day: "numeric", month: "long", year: "numeric"
-      });
-    } catch (e) {
-      return null; /* very old browser without Intl — fall back silently */
-    }
   }
 
   /* Consistent British dates for the term cards — done by hand (not Intl) so
@@ -83,54 +69,6 @@
     setAll(".js-class-day",  data.classDay);
     setAll(".js-class-time", data.classTime);
   }
-
-  /* --- work out which term is "next" --------------------------------------- */
-  function pickNextTerm(list) {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    var dated = [];
-    for (var i = 0; i < list.length; i++) {
-      var d = parseISODate(list[i] && list[i].startDate);
-      if (d) { dated.push({ term: list[i], date: d }); }
-    }
-    if (!dated.length) { return list.length ? list[0] : null; }
-
-    dated.sort(function (a, b) { return a.date - b.date; });
-
-    /* first term that starts today or later */
-    for (var j = 0; j < dated.length; j++) {
-      if (dated[j].date >= today) { return dated[j].term; }
-    }
-    /* everything is in the past — show the most recent term as a gentle fallback */
-    return dated[dated.length - 1].term;
-  }
-
-  /* --- render the hero "next term" line ------------------------------------ */
-  (function renderNextTerm() {
-    var line = byId("next-term");
-    if (!line) { return; }
-
-    var next = terms.length ? pickNextTerm(terms) : null;
-    var nice = next ? formatLongDate(next.startDate) : null;
-
-    if (nice) {
-      line.innerHTML = "";
-      var label = document.createElement("span");
-      label.className = "next-term__label";
-      label.textContent = "Next term starts on ";
-      var date = document.createElement("strong");
-      date.className = "next-term__date";
-      date.textContent = nice;
-      line.appendChild(label);
-      line.appendChild(date);
-      line.hidden = false;
-    } else {
-      /* No usable date — keep a warm, non-broken message. */
-      line.textContent = "New term dates are just below — do get in touch to book your place.";
-      line.hidden = false;
-    }
-  })();
 
   /* --- render the term dates & fees cards ---------------------------------- */
   (function renderTermCards() {

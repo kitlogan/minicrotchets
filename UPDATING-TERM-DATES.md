@@ -121,8 +121,8 @@ Everything else stays the same.
 2. Open your website and **refresh** (pull down on a phone, or press refresh):
    **https://kitlogan.github.io/minicrotchets/** — *(this becomes
    **minicrotchets.co.uk** once the domain is connected).*
-3. Check the **"Next term starts on …"** line near the top, and the **Term dates
-   & fees** cards — they should show your new information.
+3. Check the **Term dates & fees** cards — they should show your new
+   information.
 
 That's it — you're done! 🎉
 
